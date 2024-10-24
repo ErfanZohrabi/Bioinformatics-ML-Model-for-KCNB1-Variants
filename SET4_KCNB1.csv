@@ -1,0 +1,8 @@
+Predictor,TP,TN,FP,FN,Total,Sensitivity,Specificity,Accuracy,MCC
+RandomForest_Predictions,72,103,5,2,182,0.97,0.95,0.96,0.92
+SIFT,72,73,35,1,181,0.99,0.68,0.8,0.66
+PolyPhen,72,83,25,1,181,0.99,0.77,0.86,0.74
+CADD,73,46,62,0,181,1.0,0.43,0.66,0.48
+AlphaMissense,73,99,7,0,179,1.0,0.93,0.96,0.92
+EVE,53,38,3,8,102,0.87,0.93,0.89,0.78
+BayesDel,72,83,25,1,181,0.99,0.77,0.86,0.74

@@ -1,0 +1,18 @@
+matplotlib
+seaborn
+pandas
+scikit-learn
+
+# Usage: pip install -r requirements.txt
+
+# If pip not installed
+# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+# python3 get-pip.py
+# pip --version  # To check installation
+
+# If curl not installed
+# sudo apt install curl
+
+# If python3 not installed
+# sudo apt install python3
+
