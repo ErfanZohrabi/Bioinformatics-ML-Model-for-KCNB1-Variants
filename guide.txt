@@ -1,0 +1,93 @@
+# Detailed Step-by-Step Guide for Predictive Modeling of KCNB1 Gene Variants
+
+Welcome to the step-by-step guide for running or replicating the KCNB1 predictive modeling project. Follow this guide to set up, run, and understand each component of the project, even if you're not highly technical.
+
+## Prerequisites
+
+1. **Install Python**: Ensure you have Python 3.7+ installed on your system. You can download it from [Python's official site](https://www.python.org/downloads/).
+2. **Clone the Repository**: Clone the GitHub repository to your local machine:
+   ```bash
+   git clone https://github.com/yourusername/predictive_modeling_KCNB1.git
+   cd predictive_modeling_KCNB1
+   ```
+3. **Set Up Virtual Environment** (optional but recommended): Create and activate a virtual environment:
+   ```bash
+   python -m venv env
+   # Activate the virtual environment
+   source env/bin/activate   # On Windows, use: env\Scripts\activate
+   ```
+4. **Install Dependencies**: Install the required dependencies from `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Step 1: Data Preparation
+
+1. **Download Raw Data**: Raw data for the KCNB1 gene is included as `GENE_KCNB1.txt`.
+2. **Data Cleaning**: Clean the raw data using `process_clinvar_file.py`. This script removes inconsistencies and formats the data for analysis.
+   ```bash
+   python scripts/process_clinvar_file.py
+   ```
+   Output: A cleaned CSV file `SET1_KCNB1.csv` in the `data/` directory.
+
+## Step 2: Feature Extraction and Data Merging
+
+1. **Extract Features**: Use `KCNB1_features.csv` for pre-extracted features, or merge existing features with other datasets using `merge_files.py`.
+   ```bash
+   python scripts/merge_files.py data/SET1_KCNB1.csv data/KCNB1_features.csv
+   ```
+   Output: A merged feature file `SET2_KCNB1.csv` in `data/`.
+
+## Step 3: Model Training
+
+1. **Train Random Forest Model**: Train the Random Forest model using **Leave-One-Out Cross-Validation (LOOCV)** with the script `rf_model_loocv.py`.
+   ```bash
+   python scripts/rf_model_loocv.py
+   ```
+   Output: A trained model and predictions in `SET3_KCNB1.csv`. The model will also generate metrics based on LOOCV performance.
+
+## Step 4: Model Evaluation
+
+1. **Evaluate Against In-Silico Tools**: Compare the Random Forest model with in-silico tools using `performance.py`. This step evaluates metrics such as **Accuracy**, **Precision**, **Recall**, and **F1 Score**.
+   ```bash
+   python scripts/performance.py
+   ```
+   Output: Evaluation metrics and the comparison stored in `SET4_KCNB1.csv`.
+
+## Step 5: Visualization
+
+1. **Create Visualizations**: Generate visualizations to understand the feature distributions or to compare model performance.
+   - Use `plot_performance.py` to create ROC curves, scatter plots, and other charts to assess the quality of your predictions.
+   ```bash
+   python scripts/plot_performance.py
+   ```
+   Output: Saved plot files in `plots/` directory, helping you interpret model behavior visually.
+
+## Step 6: Jupyter Notebook Exploration
+
+1. **Explore with Jupyter**: Use `exploratory_analysis.ipynb` or `final.ipynb` in the `notebooks/` folder to interactively explore the data and see step-by-step explanations.
+   - Launch Jupyter Notebook:
+     ```bash
+     jupyter notebook notebooks/exploratory_analysis.ipynb
+     ```
+
+## Step 7: Running Additional ML Experiments (Optional)
+
+1. **Advanced Models with GPT Support**: Use `gpt_MLbuild.py` to run advanced ML experiments, possibly using GPT-based feature insights or analysis for more sophisticated predictions.
+   ```bash
+   python scripts/gpt_MLbuild.py
+   ```
+
+## Contributing and Collaboration
+- Feel free to make improvements or add features by opening issues or submitting pull requests on GitHub.
+- Reach out via email to the author for guidance: [Erfanzohrabi.ez@gmail.com](mailto:Erfanzohrabi.ez@gmail.com).
+
+## Common Issues and Troubleshooting
+- **Dependencies Not Installing**: Make sure your virtual environment is active, or use `pip install` with administrator privileges.
+- **Data File Not Found**: Ensure all data files are in the `data/` folder and that paths are specified correctly in the scripts.
+
+## Conclusion
+You should now be able to replicate or run this project on your local machine. Each step of the process has been broken down to make it easy, even for users without extensive technical expertise. If you encounter any issues or have questions, feel free to contact the author or consult the README for additional guidance.
+
+Happy analyzing!
+
